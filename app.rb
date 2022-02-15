@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require './lib/birthday'
 
 class BirthdayManager < Sinatra::Base
   configure :development do
@@ -8,18 +9,20 @@ class BirthdayManager < Sinatra::Base
 
   enable :sessions
   get '/' do
-    'Hello!'
     erb :index
   end
 
-  post '/names' do
-    session[:user_name] = params[:user_name]
-    redirect '/names'
+  post '/birthday' do
+    session[:name]  = params[:name]
+    session[:day]   = params[:day]
+    session[:month] = params[:month]
+    redirect '/birthday'
   end
 
-  get '/names' do
-    @user_name = session[:user_name]
-    erb :names
+  get '/birthday' do
+    @name     = session[:name]
+    @birthday = Birthday.new(session[:day], session[:month])
+    erb :birthday
   end
 
   run! if app_file == $0

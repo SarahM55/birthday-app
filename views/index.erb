@@ -2,11 +2,30 @@
 
 </div>
 
-<h2>What's your name?</h2>
-<form action="/names" method="post">
-  <label for="user_name">
-    Your name
-    <input type="text" name="user_name">
-  </label>
-  <input type="submit" value="Submit">
+
+<div align="center"><form class="form" action="/birthday" method="post">
+  <h2>What's your name?</h2>
+  <input required type="text" name="name">
+
+  <h2>When's your birthday?</h2>
+  <label>Day:</label>
+  <input required class="day" type="text" name="day">
+  
+  <label>Month:</label>
+  <select class="month" name="month">
+    <option value="January">January</option>
+    <option value="February">February</option>
+    <option value="March">March</option>
+    <option value="April">April</option>
+    <option value="May">May</option>
+    <option value="June">June</option>
+    <option value="July">July</option>
+    <option value="August">August</option>
+    <option value="September">September</option>
+    <option value="October">October</option>
+    <option value="November">November</option>
+    <option value="December">December</option>
+  </select>
+  <input class="submit" type="submit" value="Submit">
 </form>
+</div>
